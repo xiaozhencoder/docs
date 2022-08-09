@@ -10,7 +10,7 @@
 
   - [ArrayBlockingQueue](java/ArrayBlockingQueue.md)
 
-- 前端
+- WEB
 
   - [vite.config.ts 详细配置](../web/vite配置文件详解.md)
 
