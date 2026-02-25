@@ -4,8 +4,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta charset="UTF-8" />
-     <link rel="icon" href="./_media/favicon.ico">
-    <link  rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css" />
+    <title>Skying Docs</title>
+    <link rel="icon" href="./_media/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css" />
     <link rel="stylesheet" href="./_config/css/styles.css">
   </head>
   <body>
@@ -18,26 +19,19 @@
         logo: '/_media/logo.png',
         onlyCover: true,
 
-        repo: 'docsifyjs/docsify',
-        // routerMode: 'history', // default: 'hash'
-
-        coverpage: '_config/_coverpage.md', // coverpage: true,
-        // loadNavbar: '_config/_navbar.md', //  loadNavbar: true,
-        loadSidebar: '_config/_sidebar.md', // loadSidebar: true,
+        coverpage: '_config/_coverpage.md',
+        loadSidebar: '_config/_sidebar.md',
         autoHeader: false,
         mergeNavbar: true,
         subMaxLevel: 3,
         maxLevel: 4,
         auto2top: true,
-        // themeColor: 'red',
-        // relativePath: true,
         executeScript: true,
-        notFoundPage: true,
         notFoundPage: 'my404.md',
 
         search: {
           paths: 'auto',
-          placeholder: 'Search',
+          placeholder: 'Search...',
           noData: 'No Results.'
         }
       }
@@ -53,6 +47,5 @@
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-java.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-python.min.js"></script>
-    </script>
-  </body> 
+  </body>
 </html>

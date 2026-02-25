@@ -1,43 +1,57 @@
 :root {
-  --theme-color: #e50914;
-  --theme-color-dark: #b20710;
+  --notion-text: #37352f;
+  --notion-text-secondary: #787774;
+  --notion-text-tertiary: #9b9a97;
+  --notion-bg: #ffffff;
+  --notion-bg-secondary: #f7f6f3;
+  --notion-bg-hover: #efefef;
+  --notion-bg-sidebar: #fbfbfa;
+  --notion-border: #e9e9e7;
+  --notion-accent: #2eaadc;
+  --notion-accent-hover: #2496c4;
+  --notion-red: #eb5757;
+  --notion-code-bg: #f7f6f3;
+  --notion-shadow: rgba(15, 15, 15, 0.05);
+  --notion-shadow-hover: rgba(15, 15, 15, 0.1);
 
-  /* --theme-color: #39d40e;
-  --theme-color-dark: #8fd795; */
-
-  --text-color-base: #2e2e46;
-  --text-color-secondary: #646473;
-  --text-color-tertiary: #81818e;
-}
-
-body {
-  font-size: 100%;
-  line-height: 1.5;
-  color: var(--text-color-base);
+  --theme-color: #37352f;
+  --theme-color-dark: #2eaadc;
+  --text-color-base: #37352f;
+  --text-color-secondary: #787774;
+  --text-color-tertiary: #9b9a97;
 }
 
 * {
   text-decoration: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--notion-text);
+  background: var(--notion-bg);
 }
 
 a {
-  transition: all 0.3s linear;
+  color: var(--notion-text);
+  transition: color 0.15s ease;
 }
 
+/****** GitHub Corner - hide for clean look ******/
 .github-corner {
-  z-index: 5;
+  display: none;
 }
 
 /****** Cover Page ******/
 section.cover {
-  padding-bottom: 112px; /* fixed footer (skying) height */
-  height: auto;
+  background: var(--notion-bg) !important;
   min-height: 100vh;
-  /**
-   * Intended to defeat this inline style on initial boot that flashes when on page load:
-   * https://github.com/docsifyjs/docsify/blob/8352a1e489abc2a7b6361fe02d696e1891a031cd/src/core/render/tpl.js#L56-L70
-   */
-  background: #fff !important;
+  height: auto;
+  padding: 0;
 }
 
 section.cover .cover-main {
@@ -45,38 +59,61 @@ section.cover .cover-main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0;
-  padding: 32px 16px 0;
+  margin: 0 auto;
+  padding: 80px 32px 60px;
+  max-width: 720px;
+  text-align: center;
 }
 
-section.cover img {
-  width: 300px;
+section.cover img[data-origin="_media/logo.png"],
+section.cover img[alt="logo"] {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 24px;
 }
 
 section.cover h1 {
-  margin: 0.625rem 0 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--notion-text);
+  margin: 0 0 8px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 section.cover blockquote,
 section.cover blockquote p {
   margin: 0;
+  font-size: 1.125rem;
+  color: var(--notion-text-secondary);
+  font-weight: 400;
+  line-height: 1.6;
+  border: none;
+  padding: 0;
 }
 
 section.cover ul {
-  font-size: 1.25rem;
-  line-height: 2rem;
-  display: grid;
-  text-align: left;
-  grid-column-gap: 16px;
-  grid-row-gap: 20px;
-  grid-template-columns: repeat(2, 50%);
+  font-size: 1rem;
+  line-height: 1.8;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
   list-style: none;
-  max-width: unset;
-  margin: 1.5em 0;
+  max-width: 600px;
+  margin: 28px auto;
+  padding: 0;
+  color: var(--notion-text-secondary);
 }
 
 section.cover ul li {
   white-space: nowrap;
+  padding: 4px 12px;
+  background: var(--notion-bg-secondary);
+  border-radius: 4px;
+  font-size: 0.9375rem;
 }
 
 section.cover.show ~ .sidebar,
@@ -85,82 +122,58 @@ section.cover.show ~ .sidebar-toggle {
 }
 
 .cover-main .skying-logo {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  background: #ffffff;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 40px;
-  z-index: 5;
-}
-
-.cover-main .skying-logo .logo {
-  width: 125px;
-  height: 32px;
-  background: url('/_media/Skying_Logo.png');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
+  display: none;
 }
 
 .cover-main .buttons {
   width: 100%;
+  margin-top: 8px;
 }
 
 .cover-main .buttons a {
-  font-weight: 700;
+  font-weight: 500;
   position: relative;
   display: inline-block;
-  padding: 12px 25px;
-  font-size: 14px;
+  padding: 10px 28px;
+  font-size: 0.9375rem;
   text-align: center;
-  line-height: 18px;
-  color: #221f1f;
-  background: #fff;
+  line-height: 20px;
   outline: none;
   border: none;
-  background-color: #fff;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   cursor: pointer;
-  margin: 0 1rem;
-  color: var(--theme-color);
+  margin: 0 8px;
   overflow: hidden;
-  transition: color 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
-  vertical-align: baseline;
-  text-transform: uppercase;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.cover-main .buttons a:first-child {
+  color: var(--notion-text-secondary);
+  background: var(--notion-bg-secondary);
+  border: 1px solid var(--notion-border);
+}
+
+.cover-main .buttons a:first-child:hover {
+  background: var(--notion-bg-hover);
+  box-shadow: none;
+}
+
+.cover-main .buttons a:last-child {
+  color: #fff;
+  background: var(--notion-accent);
+  border: 1px solid var(--notion-accent);
+}
+
+.cover-main .buttons a:last-child:hover {
+  background: var(--notion-accent-hover);
+  box-shadow: 0 2px 8px rgba(46, 170, 220, 0.25);
 }
 
 .cover-main .buttons a:before,
 .cover-main .buttons a:after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  border: 2px solid var(--theme-color);
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-.cover-main .buttons a:after {
-  background: var(--theme-color);
-  transform: translateX(-101%);
-  transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.cover-main .buttons a:hover {
-  color: white;
-  box-shadow: 0 5px 16px rgba(229, 9, 20, 0.3);
-  border-radius: 5px;
-}
-
-.cover-main .buttons a:hover:after {
-  transform: translateX(0);
+  display: none;
 }
 
 .cover-main .buttons a span {
@@ -170,45 +183,142 @@ section.cover.show ~ .sidebar-toggle {
 
 @media (max-width: 850px) {
   section.cover ul {
-    grid-template-columns: 100%;
-    padding: 0;
-  }
-
-  section.cover ul li {
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 @media (max-width: 450px) {
-  section.cover ul li {
-    white-space: normal;
+  section.cover .cover-main {
+    padding: 60px 20px 40px;
+  }
+
+  section.cover h1 {
+    font-size: 1.75rem;
   }
 
   .cover-main .buttons a {
     width: 100%;
-    margin: 0.2rem 0;
+    margin: 4px 0;
   }
 }
 
 /****** Sidebar ******/
+.sidebar {
+  background: var(--notion-bg-sidebar) !important;
+  border-right: 1px solid var(--notion-border) !important;
+  padding-top: 16px;
+}
+
+.sidebar .app-name-link {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+}
+
 .sidebar .app-name-link img {
-  height: 150px;
+  height: 80px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.sidebar > h1 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--notion-text);
+  padding: 0 16px;
+  margin: 0;
+}
+
+.sidebar ul {
+  padding: 0 8px !important;
+}
+
+.sidebar ul li {
+  margin: 1px 0;
 }
 
 .sidebar ul li a {
-  font-size: 15px;
+  font-size: 14px !important;
+  color: var(--notion-text-secondary) !important;
+  padding: 4px 12px !important;
+  border-radius: 6px;
+  display: block;
+  transition: all 0.1s ease;
+  line-height: 1.6;
 }
 
 .sidebar ul li a:hover {
-  color: var(--theme-color);
+  color: var(--notion-text) !important;
+  background: var(--notion-bg-hover) !important;
+}
+
+.sidebar ul li.active > a {
+  color: var(--notion-accent) !important;
+  background: rgba(46, 170, 220, 0.06) !important;
+  font-weight: 500;
+}
+
+.sidebar ul li > p {
+  font-size: 12px !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--notion-text-tertiary) !important;
+  padding: 16px 12px 4px !important;
+  margin: 0 !important;
 }
 
 .app-sub-sidebar li:before {
   display: none;
 }
 
-.sidebar .search .clear-button {
+/****** Search ******/
+.sidebar .search {
+  padding: 8px 12px !important;
+  margin-bottom: 4px;
+}
+
+.sidebar .search .input-wrap {
+  border: 1px solid var(--notion-border) !important;
+  border-radius: 6px !important;
+  background: var(--notion-bg) !important;
+  overflow: hidden;
+}
+
+.sidebar .search .input-wrap input {
+  font-size: 14px !important;
+  color: var(--notion-text) !important;
+  padding: 8px 12px !important;
+  line-height: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.sidebar .search .input-wrap input::placeholder {
+  color: var(--notion-text-tertiary) !important;
+}
+
+.sidebar .search .input-wrap input:focus {
+  box-shadow: none !important;
+}
+
+.sidebar .search .input-wrap .clear-button {
   cursor: pointer;
+}
+
+.sidebar .search .results-panel {
+  font-size: 14px;
+}
+
+.sidebar .search .matching-post {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--notion-border);
+}
+
+.sidebar .search .matching-post:hover {
+  background: var(--notion-bg-hover);
 }
 
 /****** Sidebar Toggle ******/
@@ -228,14 +338,19 @@ body .sidebar-toggle {
 }
 
 body .sidebar-toggle span {
-  background-color: var(--theme-color);
-  height: 0.2rem;
-  width: 1.5rem;
+  background-color: var(--notion-text-tertiary);
+  height: 2px;
+  width: 1.25rem;
   position: absolute;
   left: 0;
   margin: 0;
   transform-origin: 0;
-  border-radius: 1px;
+  border-radius: 2px;
+  transition: background-color 0.15s ease;
+}
+
+body .sidebar-toggle:hover span {
+  background-color: var(--notion-text);
 }
 
 body.close .sidebar-toggle {
@@ -260,9 +375,6 @@ body .sidebar-toggle span:nth-child(3) {
 }
 
 .sidebar-toggle:hover {
-  opacity: 0.8;
-}
-.sidebar-toggle .sidebar-toggle-button:hover {
   opacity: 1;
 }
 
@@ -278,39 +390,128 @@ body .sidebar-toggle span:nth-child(3) {
 
 /****** Markdown General ******/
 .markdown-section {
-  padding: 30px 30px 40px;
+  padding: 40px 60px 60px;
+  max-width: 900px;
+}
+
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4,
+.markdown-section h5,
+.markdown-section h6 {
+  font-weight: 600;
+  color: var(--notion-text);
+  letter-spacing: -0.01em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+.markdown-section h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-section h2 {
+  font-size: 1.5rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.markdown-section h3 {
+  font-size: 1.25rem;
+}
+
+.markdown-section h4 {
+  font-size: 1.0625rem;
+}
+
+.markdown-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0.5em 0 1em;
+  color: var(--notion-text);
 }
 
 .markdown-section a {
+  color: var(--notion-text);
   text-decoration: none;
-  border-bottom: 0.1rem solid var(--theme-color);
-  transition: all 0.3s ease;
+  border-bottom: 1px solid var(--notion-border);
+  transition: border-color 0.15s ease;
 }
 
 .markdown-section a:hover {
-  border-color: var(--theme-color-dark);
-  color: var(--theme-color-dark);
+  border-color: var(--notion-text);
+  color: var(--notion-text);
 }
 
 .markdown-section a.anchor {
   border: none;
 }
 
+.markdown-section ul,
+.markdown-section ol {
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+}
+
+.markdown-section li {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 2px 0;
+  color: var(--notion-text);
+}
+
+.markdown-section hr {
+  border: none;
+  border-top: 1px solid var(--notion-border);
+  margin: 2em 0;
+}
+
+/****** Markdown Blockquote ******/
+.markdown-section blockquote {
+  margin: 1em 0;
+  padding: 4px 0 4px 16px;
+  border-left: 3px solid var(--notion-text);
+  background: transparent;
+}
+
+.markdown-section blockquote > p {
+  font-weight: 400;
+  color: var(--notion-text);
+}
+
+.markdown-section em,
+.markdown-section blockquote {
+  color: var(--notion-text-secondary);
+}
+
 /****** Markdown Table ******/
 .markdown-section table {
   display: table;
-}
-
-.markdown-section table tr {
-  border-width: 0.15rem 0;
-  border-style: solid;
-  border-color: #f1f1f2;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
 }
 
 .markdown-section table thead tr {
-  text-transform: uppercase;
-  font-size: 90%;
-  border-top: none;
+  border-bottom: 1px solid var(--notion-border);
+  text-transform: none;
+  font-size: 100%;
+}
+
+.markdown-section table tr {
+  border-width: 0;
+  border-style: none;
+  border-color: transparent;
+}
+
+.markdown-section table tbody tr {
+  border-top: 1px solid var(--notion-border);
 }
 
 .markdown-section table tbody tr:last-of-type {
@@ -324,43 +525,177 @@ body .sidebar-toggle span:nth-child(3) {
 .markdown-section table td,
 .markdown-section table th {
   border: none;
-  padding: 1.1rem 0.5rem;
+  padding: 8px 12px;
   text-align: left;
+  font-size: 0.9375rem;
+  color: var(--notion-text);
+}
+
+.markdown-section table th {
+  font-weight: 600;
+  color: var(--notion-text-secondary);
+  font-size: 0.8125rem;
 }
 
 .markdown-section table td p {
   margin: 0;
 }
 
-.markdown-section blockquote {
+/****** Inline Code ******/
+.markdown-section code {
+  font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono",
+    Courier, monospace;
+  font-size: 0.875em;
+  background: var(--notion-code-bg);
+  color: var(--notion-red);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: none;
+}
+
+.markdown-section pre {
+  background: var(--notion-code-bg) !important;
+  border-radius: 6px;
+  padding: 16px 20px;
   margin: 1em 0;
+  border: none;
+  overflow-x: auto;
 }
 
-.markdown-section blockquote > p {
-  font-weight: 500;
+.markdown-section pre code {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--notion-text);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
 }
 
-.markdown-section em,
-.markdown-section blockquote {
-  color: var(--text-color-tertiary);
+/****** Code Syntax Highlighting (Notion-like muted tones) ******/
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--notion-text-tertiary);
 }
 
-/****** CODE HIGHLIGHTING ******/
-.token.string {
-  color: #42b983;
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #eb5757;
 }
 
 .token.boolean,
 .token.number {
-  color: var(--theme-color);
+  color: #9065b0;
 }
 
-.lang-bash .token.function,
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #0f7b6c;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--notion-text);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #2eaadc;
+}
+
+.token.function,
+.token.class-name {
+  color: #d9730d;
+}
+
+.lang-bash .token.function {
+  color: #d9730d;
+}
+
 .lang-json .token.property {
-  color: #e96900;
+  color: #2eaadc;
 }
 
-/****** COPY TO CLIPBOARD ******/
+/****** Copy to Clipboard ******/
 .docsify-copy-code-button {
-  font-size: 0.7em !important;
+  font-size: 0.75em !important;
+  font-family: inherit !important;
+  color: var(--notion-text-tertiary) !important;
+  background: var(--notion-bg) !important;
+  border: 1px solid var(--notion-border) !important;
+  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  transition: all 0.15s ease !important;
+}
+
+.docsify-copy-code-button:hover {
+  color: var(--notion-text) !important;
+  border-color: var(--notion-text-tertiary) !important;
+}
+
+/****** Pagination ******/
+.docsify-pagination-container {
+  border-top: 1px solid var(--notion-border) !important;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+.pagination-item-label {
+  color: var(--notion-text-tertiary) !important;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pagination-item-title {
+  color: var(--notion-text) !important;
+  font-weight: 500;
+}
+
+/****** Image ******/
+.markdown-section img {
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+/****** Scrollbar (Notion-style thin) ******/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--notion-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--notion-text-tertiary);
+}
+
+/****** Strong / Bold text ******/
+.markdown-section strong {
+  font-weight: 600;
+  color: var(--notion-text);
+}
+
+/****** Callout-like blockquotes with emoji ******/
+.markdown-section > blockquote {
+  border-radius: 4px;
 }
